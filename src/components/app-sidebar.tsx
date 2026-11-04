@@ -1,11 +1,5 @@
 import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
-import {
-  LayoutDashboard,
-  Plug,
-  Wand2,
-  CalendarClock,
-  LogOut,
-} from "lucide-react";
+import { LayoutDashboard, Plug, Wand2, CalendarClock, LogOut } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";

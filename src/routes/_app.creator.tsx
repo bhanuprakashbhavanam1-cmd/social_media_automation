@@ -97,15 +97,19 @@ function convertGoogleDriveLink(url: string): string {
   if (!url) return url;
 
   // Match standard drive / docs file URL format: /file/d/FILE_ID
-  const fileIdMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
-    url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  const fileIdMatch =
+    url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/\/d\/([a-zA-Z0-9_-]+)/);
   if (fileIdMatch && fileIdMatch[1]) {
     return `https://drive.google.com/uc?export=download&id=${fileIdMatch[1]}`;
   }
 
   // Match open?id=FILE_ID or uc?id=FILE_ID format
   const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-  if (idParamMatch && idParamMatch[1] && (url.includes("drive.google.com") || url.includes("docs.google.com"))) {
+  if (
+    idParamMatch &&
+    idParamMatch[1] &&
+    (url.includes("drive.google.com") || url.includes("docs.google.com"))
+  ) {
     return `https://drive.google.com/uc?export=download&id=${idParamMatch[1]}`;
   }
 
@@ -178,10 +182,12 @@ function CreatorPage() {
       return;
     }
 
-    const isVideo = mediaUrl.match(/\.(mp4|mov|webm|avi|mkv|3gp|m4v)/i) ||
+    const isVideo =
+      mediaUrl.match(/\.(mp4|mov|webm|avi|mkv|3gp|m4v)/i) ||
       mediaUrl.includes("drive.google.com") ||
       (uploadedFileDetails && uploadedFileDetails.type.startsWith("video"));
-    const isImage = mediaUrl.match(/\.(jpeg|jpg|png|gif|webp|svg)/i) ||
+    const isImage =
+      mediaUrl.match(/\.(jpeg|jpg|png|gif|webp|svg)/i) ||
       (uploadedFileDetails && uploadedFileDetails.type.startsWith("image"));
 
     if (isImage) {
@@ -225,10 +231,14 @@ function CreatorPage() {
 
     if (postFormat === "short") {
       if (mediaType === "image") {
-        setValidationWarning("You selected 'Short', but the provided media is an image. YouTube Shorts and Instagram Reels must be video files.");
+        setValidationWarning(
+          "You selected 'Short', but the provided media is an image. YouTube Shorts and Instagram Reels must be video files.",
+        );
       } else if (mediaType === "video") {
         if (mediaDuration !== null && mediaDuration > 60) {
-          setValidationWarning(`You selected 'Short', but the video duration is ${Math.round(mediaDuration)}s. YouTube Shorts must be 60 seconds or less.`);
+          setValidationWarning(
+            `You selected 'Short', but the video duration is ${Math.round(mediaDuration)}s. YouTube Shorts must be 60 seconds or less.`,
+          );
         } else {
           setValidationWarning(null);
         }
@@ -237,10 +247,14 @@ function CreatorPage() {
       }
     } else if (postFormat === "video") {
       if (mediaType === "image") {
-        setValidationWarning("You selected 'Video', but the provided media is an image. Long-form video posts must be video files.");
+        setValidationWarning(
+          "You selected 'Video', but the provided media is an image. Long-form video posts must be video files.",
+        );
       } else if (mediaType === "video") {
         if (mediaDuration !== null && mediaDuration <= 60) {
-          setValidationWarning(`You selected 'Video' (long-form), but the video duration is only ${Math.round(mediaDuration)}s. It is recommended to use the 'Short' format.`);
+          setValidationWarning(
+            `You selected 'Video' (long-form), but the video duration is only ${Math.round(mediaDuration)}s. It is recommended to use the 'Short' format.`,
+          );
         } else {
           setValidationWarning(null);
         }
@@ -249,13 +263,17 @@ function CreatorPage() {
       }
     } else if (postFormat === "post") {
       if (selectedPlatforms.includes("youtube") && mediaType === "image") {
-        setValidationWarning("Warning: YouTube does not support image posts. YouTube target will fail unless you change the format to 'Short' or 'Video' and upload a video file, or deselect YouTube.");
+        setValidationWarning(
+          "Warning: YouTube does not support image posts. YouTube target will fail unless you change the format to 'Short' or 'Video' and upload a video file, or deselect YouTube.",
+        );
       } else {
         setValidationWarning(null);
       }
     } else if (postFormat === "story") {
       if (mediaType === "video" && mediaDuration !== null && mediaDuration > 60) {
-        setValidationWarning(`You selected 'Story', but the video duration is ${Math.round(mediaDuration)}s. Stories are typically capped at 15-60 seconds depending on the platform.`);
+        setValidationWarning(
+          `You selected 'Story', but the video duration is ${Math.round(mediaDuration)}s. Stories are typically capped at 15-60 seconds depending on the platform.`,
+        );
       } else {
         setValidationWarning(null);
       }
@@ -411,7 +429,9 @@ function CreatorPage() {
         if (response.data && response.data.success) {
           data = response.data.data;
         } else {
-          invokeError = response.error || new Error(response.data?.error || "Edge Function returned success=false");
+          invokeError =
+            response.error ||
+            new Error(response.data?.error || "Edge Function returned success=false");
         }
       } catch (err: any) {
         console.warn(
@@ -551,7 +571,9 @@ function CreatorPage() {
       // localDateTimeToUTC() appends :00 so the browser parses it as local time first.
       const scheduledTime = localDateTimeToUTC(suggestedPublishTime);
       if (!scheduledTime) {
-        toast.error("Invalid scheduled time", { description: "Please select a valid date and time." });
+        toast.error("Invalid scheduled time", {
+          description: "Please select a valid date and time.",
+        });
         setIsSaving(false);
         return;
       }
@@ -699,7 +721,7 @@ function CreatorPage() {
                     <div className="flex items-center gap-3">
                       <div className="flex h-9 w-9 items-center justify-center rounded bg-success/10 text-success">
                         {uploadedFileDetails?.type.includes("video") ||
-                          mediaUrl.match(/\.(mp4|mov|webm|avi)/i) ? (
+                        mediaUrl.match(/\.(mp4|mov|webm|avi)/i) ? (
                           <FileVideo size={18} />
                         ) : (
                           <ImageIcon size={18} />
@@ -1071,7 +1093,9 @@ function CreatorPage() {
                   {validationWarning && (
                     <div className="mt-2.5 p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 text-amber-600 dark:text-amber-400 flex items-start gap-2 animate-in fade-in duration-200">
                       <AlertCircle size={14} className="mt-0.5 shrink-0" />
-                      <span className="text-[11px] leading-normal font-medium">{validationWarning}</span>
+                      <span className="text-[11px] leading-normal font-medium">
+                        {validationWarning}
+                      </span>
                     </div>
                   )}
                 </div>

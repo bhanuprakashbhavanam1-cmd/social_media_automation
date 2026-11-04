@@ -73,17 +73,17 @@ Omni Automata is an enterprise-grade, full-stack web application built with **Re
 
 ## Tech Stack & Architecture
 
-| Layer | Technologies |
-|---|---|
-| **Frontend Framework** | [React 19](https://react.dev/), [TanStack Start](https://tanstack.com/start) (Full-stack SSR) |
-| **Routing** | [TanStack Router](https://tanstack.com/router) (Strict type-safe file-based routing) |
-| **State & Data Fetching** | [TanStack Query v5](https://tanstack.com/query) |
-| **Styling & Design** | [Tailwind CSS v4](https://tailwindcss.com/), Radix UI Primitives, Lucide Icons |
-| **Forms & Validation** | React Hook Form, Zod |
-| **Bundler & Server** | [Vite 7](https://vitejs.dev/) + [Nitro 3](https://nitro.unjs.io/) |
-| **Backend & Database** | [Supabase](https://supabase.com/) (PostgreSQL 17, PostgREST, GoTrue Auth, Storage) |
-| **Serverless Functions** | Supabase Edge Functions (Deno runtime) + TanStack Server Functions (`createServerFn`) |
-| **AI LLM Providers** | [DeepSeek API](https://platform.deepseek.com/) & [Google AI Studio (Gemini)](https://aistudio.google.com/) |
+| Layer                     | Technologies                                                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Frontend Framework**    | [React 19](https://react.dev/), [TanStack Start](https://tanstack.com/start) (Full-stack SSR)              |
+| **Routing**               | [TanStack Router](https://tanstack.com/router) (Strict type-safe file-based routing)                       |
+| **State & Data Fetching** | [TanStack Query v5](https://tanstack.com/query)                                                            |
+| **Styling & Design**      | [Tailwind CSS v4](https://tailwindcss.com/), Radix UI Primitives, Lucide Icons                             |
+| **Forms & Validation**    | React Hook Form, Zod                                                                                       |
+| **Bundler & Server**      | [Vite 7](https://vitejs.dev/) + [Nitro 3](https://nitro.unjs.io/)                                          |
+| **Backend & Database**    | [Supabase](https://supabase.com/) (PostgreSQL 17, PostgREST, GoTrue Auth, Storage)                         |
+| **Serverless Functions**  | Supabase Edge Functions (Deno runtime) + TanStack Server Functions (`createServerFn`)                      |
+| **AI LLM Providers**      | [DeepSeek API](https://platform.deepseek.com/) & [Google AI Studio (Gemini)](https://aistudio.google.com/) |
 
 ---
 
@@ -238,46 +238,46 @@ omni-automata-main1/
 
 ### Root Configuration Files
 
-| File | Purpose |
-|---|---|
-| [`.env.example`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/.env.example) | Public environment variable blueprint containing placeholder keys, variable descriptions, and provider links. |
-| [`.gitignore`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/.gitignore) | Ensures secrets (`.env*`), temporary files (`scratch/`, `supabase/.temp/`), build outputs (`dist/`), and logs (`platform.log`) are never committed. |
-| [`package.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/package.json) | Defines project metadata, script commands (`dev`, `build`), and dependencies (React 19, TanStack Start, Supabase, Radix). |
-| [`vite.config.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/vite.config.ts) | Vite build configuration leveraging `@lovable.dev/vite-tanstack-config` to bundle Nitro SSR and client assets. |
-| [`tsconfig.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/tsconfig.json) | TypeScript compiler options enabling strict mode, JSX transformation, and `@/*` path aliases. |
-| [`eslint.config.js`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/eslint.config.js) | ESLint configuration enforcing code quality and React hook rules. |
-| [`components.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/components.json) | Configuration file for shadcn/ui detailing styling paths and icon libraries. |
-| [`bunfig.toml`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/bunfig.toml) | Runtime configuration for Bun execution. |
-| [`db.sql`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/db.sql) | Executable SQL schema creating the 4 core social automation tables, triggers, indexes, and RLS policies. |
-| [`platform.log`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/platform.log) | Local append-only log file recording background queue execution, edge function dispatches, and errors. |
+| File                                                                                                               | Purpose                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`.env.example`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/.env.example)         | Public environment variable blueprint containing placeholder keys, variable descriptions, and provider links.                                       |
+| [`.gitignore`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/.gitignore)             | Ensures secrets (`.env*`), temporary files (`scratch/`, `supabase/.temp/`), build outputs (`dist/`), and logs (`platform.log`) are never committed. |
+| [`package.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/package.json)         | Defines project metadata, script commands (`dev`, `build`), and dependencies (React 19, TanStack Start, Supabase, Radix).                           |
+| [`vite.config.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/vite.config.ts)     | Vite build configuration leveraging `@lovable.dev/vite-tanstack-config` to bundle Nitro SSR and client assets.                                      |
+| [`tsconfig.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/tsconfig.json)       | TypeScript compiler options enabling strict mode, JSX transformation, and `@/*` path aliases.                                                       |
+| [`eslint.config.js`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/eslint.config.js) | ESLint configuration enforcing code quality and React hook rules.                                                                                   |
+| [`components.json`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/components.json)   | Configuration file for shadcn/ui detailing styling paths and icon libraries.                                                                        |
+| [`bunfig.toml`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/bunfig.toml)           | Runtime configuration for Bun execution.                                                                                                            |
+| [`db.sql`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/db.sql)                     | Executable SQL schema creating the 4 core social automation tables, triggers, indexes, and RLS policies.                                            |
+| [`platform.log`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/platform.log)         | Local append-only log file recording background queue execution, edge function dispatches, and errors.                                              |
 
 ---
 
 ### Application Entry & Core (`src/`)
 
-| File | Purpose |
-|---|---|
-| [`src/main.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/main.tsx) | Client entry point that renders the React root and initiates router hydration. |
-| [`src/server.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/server.ts) | Server entry point for TanStack Start SSR; kicks off [`startQueueScheduler()`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/lib/queue-scheduler.ts) and handles SSR error normalization. |
-| [`src/start.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/start.ts) | Configures TanStack Start request middleware and global server error handling. |
-| [`src/router.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/router.tsx) | Factory initializing the type-safe TanStack Router instance and attaching `QueryClient`. |
-| [`src/routeTree.gen.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routeTree.gen.ts) | Auto-generated route tree generated by TanStack Router compiler mapping files in `routes/` to type-safe URLs. |
-| [`src/styles.css`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/styles.css) | Global stylesheet importing Tailwind CSS, custom design tokens, warm color palettes, and animations. |
+| File                                                                                                                       | Purpose                                                                                                                                                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`src/main.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/main.tsx)                 | Client entry point that renders the React root and initiates router hydration.                                                                                                                                              |
+| [`src/server.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/server.ts)               | Server entry point for TanStack Start SSR; kicks off [`startQueueScheduler()`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/lib/queue-scheduler.ts) and handles SSR error normalization. |
+| [`src/start.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/start.ts)                 | Configures TanStack Start request middleware and global server error handling.                                                                                                                                              |
+| [`src/router.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/router.tsx)             | Factory initializing the type-safe TanStack Router instance and attaching `QueryClient`.                                                                                                                                    |
+| [`src/routeTree.gen.ts`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routeTree.gen.ts) | Auto-generated route tree generated by TanStack Router compiler mapping files in `routes/` to type-safe URLs.                                                                                                               |
+| [`src/styles.css`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/styles.css)             | Global stylesheet importing Tailwind CSS, custom design tokens, warm color palettes, and animations.                                                                                                                        |
 
 ---
 
 ### File-Based Routes (`src/routes/`)
 
-| File | Route | Description |
-|---|---|---|
-| [`src/routes/__root.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/__root.tsx) | — | Root route rendering the top-level HTML document, meta tags, styles, QueryClientProvider, and 404/Error fallbacks. |
-| [`src/routes/_app.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.tsx) | `/_app/*` | Protected layout container. Checks session existence; redirects unauthenticated visitors to `/auth` and displays navigation sidebar. |
-| [`src/routes/_app.index.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.index.tsx) | `/` | **Main Dashboard**: Displays platform connection count, published/scheduled metrics, countdown to next scheduled post, and live activity feeds. |
-| [`src/routes/_app.creator.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.creator.tsx) | `/creator` | **Campaign Creator**: Drag-and-drop media upload (images/videos), post prompt input, platform selection, one-click AI generation, variant editor, and scheduling trigger. |
-| [`src/routes/_app.queue.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.queue.tsx) | `/queue` | **Content Queue & Scheduler**: Displays scheduled posts, filterable by status (`pending`, `published`, `failed`), retry triggers, and post deletion. |
-| [`src/routes/_app.integrations.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.integrations.tsx) | `/integrations` | **Platform Integrations**: Connect and disconnect YouTube, Instagram, Facebook, and X. Manages OAuth callbacks and provides Instagram Manual Reminder Mode. |
-| [`src/routes/auth.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/auth.tsx) | `/auth` | **Authentication Page**: Clean tabbed interface for User Login and Registration using Supabase Auth with toast notifications. |
-| [`src/routes/privacy.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/privacy.tsx) | `/privacy` | **Privacy Policy & Data Deletion**: Public compliance page detailing data protection policies and Meta Graph API data deletion instructions. |
+| File                                                                                                                                               | Route           | Description                                                                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`src/routes/__root.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/__root.tsx)                       | —               | Root route rendering the top-level HTML document, meta tags, styles, QueryClientProvider, and 404/Error fallbacks.                                                        |
+| [`src/routes/_app.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.tsx)                           | `/_app/*`       | Protected layout container. Checks session existence; redirects unauthenticated visitors to `/auth` and displays navigation sidebar.                                      |
+| [`src/routes/_app.index.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.index.tsx)               | `/`             | **Main Dashboard**: Displays platform connection count, published/scheduled metrics, countdown to next scheduled post, and live activity feeds.                           |
+| [`src/routes/_app.creator.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.creator.tsx)           | `/creator`      | **Campaign Creator**: Drag-and-drop media upload (images/videos), post prompt input, platform selection, one-click AI generation, variant editor, and scheduling trigger. |
+| [`src/routes/_app.queue.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.queue.tsx)               | `/queue`        | **Content Queue & Scheduler**: Displays scheduled posts, filterable by status (`pending`, `published`, `failed`), retry triggers, and post deletion.                      |
+| [`src/routes/_app.integrations.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/_app.integrations.tsx) | `/integrations` | **Platform Integrations**: Connect and disconnect YouTube, Instagram, Facebook, and X. Manages OAuth callbacks and provides Instagram Manual Reminder Mode.               |
+| [`src/routes/auth.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/auth.tsx)                           | `/auth`         | **Authentication Page**: Clean tabbed interface for User Login and Registration using Supabase Auth with toast notifications.                                             |
+| [`src/routes/privacy.tsx`](file:///c:/Users/bhanu/Desktop/Projects/Capston_Project/omni-automata-main1/src/routes/privacy.tsx)                     | `/privacy`      | **Privacy Policy & Data Deletion**: Public compliance page detailing data protection policies and Meta Graph API data deletion instructions.                              |
 
 ---
 
@@ -358,12 +358,12 @@ The database is built on **PostgreSQL 17** via Supabase. It features 4 dedicated
 
 ### Entity Descriptions
 
-| Table Name | Description | Key Columns |
-|---|---|---|
-| `users` | User profile records synced with Supabase Auth (`auth.users`). Tracks free AI credits. | `id`, `email`, `ai_credits`, `created_at`, `updated_at` |
-| `social_accounts` | Stored OAuth credentials and account state for connected platforms. | `id`, `user_id`, `platform_name`, `platform_account_id`, `platform_account_name`, `access_token`, `refresh_token`, `token_expires_at` |
-| `content_queue` | Central social publishing queue tracking scheduled posts, media URLs, and AI-generated variants. | `id`, `user_id`, `media_url`, `platform_targets`, `ai_generated_content` (JSONB), `scheduled_time`, `status`, `error_message` |
-| `analytics` | Metric records per published post across target platforms. | `id`, `post_id`, `platform`, `impressions`, `likes`, `shares`, `comments`, `updated_at` |
+| Table Name        | Description                                                                                      | Key Columns                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `users`           | User profile records synced with Supabase Auth (`auth.users`). Tracks free AI credits.           | `id`, `email`, `ai_credits`, `created_at`, `updated_at`                                                                               |
+| `social_accounts` | Stored OAuth credentials and account state for connected platforms.                              | `id`, `user_id`, `platform_name`, `platform_account_id`, `platform_account_name`, `access_token`, `refresh_token`, `token_expires_at` |
+| `content_queue`   | Central social publishing queue tracking scheduled posts, media URLs, and AI-generated variants. | `id`, `user_id`, `media_url`, `platform_targets`, `ai_generated_content` (JSONB), `scheduled_time`, `status`, `error_message`         |
+| `analytics`       | Metric records per published post across target platforms.                                       | `id`, `post_id`, `platform`, `impressions`, `likes`, `shares`, `comments`, `updated_at`                                               |
 
 ### Row Level Security (RLS) Model
 
@@ -379,12 +379,12 @@ Strict multi-tenant isolation is enforced at the database layer via PostgreSQL R
 
 ## Social Platform Integrations
 
-| Platform | Authentication | Publishing Capabilities | Media Format Supported |
-|---|---|---|---|
-| **Instagram** | Meta OAuth 2.0 / Manual Handle | Direct Auto-Publish (Reels, Posts, Stories) or Reminder Prompts | Images (JPG, PNG), Videos (MP4, MOV) |
-| **Facebook** | Meta OAuth 2.0 (Page Access Token) | Feed Posts, Page Stories, Video Posts | Images (JPG, PNG), Videos (MP4) |
-| **YouTube** | Google OAuth 2.0 (`youtube.upload`) | Resumable video upload pipeline, automated Shorts detection | Videos (MP4, MOV, WebM) |
-| **X (Twitter)**| Twitter OAuth 2.0 with PKCE | Text hook updates, scheduled thread posts | Text hooks (<280 chars) |
+| Platform        | Authentication                      | Publishing Capabilities                                         | Media Format Supported               |
+| --------------- | ----------------------------------- | --------------------------------------------------------------- | ------------------------------------ |
+| **Instagram**   | Meta OAuth 2.0 / Manual Handle      | Direct Auto-Publish (Reels, Posts, Stories) or Reminder Prompts | Images (JPG, PNG), Videos (MP4, MOV) |
+| **Facebook**    | Meta OAuth 2.0 (Page Access Token)  | Feed Posts, Page Stories, Video Posts                           | Images (JPG, PNG), Videos (MP4)      |
+| **YouTube**     | Google OAuth 2.0 (`youtube.upload`) | Resumable video upload pipeline, automated Shorts detection     | Videos (MP4, MOV, WebM)              |
+| **X (Twitter)** | Twitter OAuth 2.0 with PKCE         | Text hook updates, scheduled thread posts                       | Text hooks (<280 chars)              |
 
 ---
 
@@ -469,14 +469,14 @@ Visit `http://localhost:3000` in your browser.
 
 ## Available CLI Scripts
 
-| Command | Action |
-|---|---|
-| `npm run dev` | Starts the Vite development server with hot module reloading and SSR support. |
-| `npm run build` | Compiles full-stack production build via Vite & Nitro engine into `dist/`. |
-| `npm run build:dev` | Compiles application bundle with development-mode flags for debugging. |
-| `npm run preview` | Spins up a local production HTTP server to test the production bundle. |
-| `npm run lint` | Runs ESLint across all TypeScript and React files. |
-| `npm run format` | Runs Prettier across the codebase to ensure consistent code styling. |
+| Command             | Action                                                                        |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `npm run dev`       | Starts the Vite development server with hot module reloading and SSR support. |
+| `npm run build`     | Compiles full-stack production build via Vite & Nitro engine into `dist/`.    |
+| `npm run build:dev` | Compiles application bundle with development-mode flags for debugging.        |
+| `npm run preview`   | Spins up a local production HTTP server to test the production bundle.        |
+| `npm run lint`      | Runs ESLint across all TypeScript and React files.                            |
+| `npm run format`    | Runs Prettier across the codebase to ensure consistent code styling.          |
 
 ---
 

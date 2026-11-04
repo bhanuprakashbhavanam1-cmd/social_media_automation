@@ -130,14 +130,22 @@ END $$;
 
 -- Sync Profile on User Signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+SECURITY DEFINER
+SET search_path = public, auth
+LANGUAGE plpgsql AS $$
 BEGIN
     INSERT INTO public.users (id, email, ai_credits)
-    VALUES (new.id, new.email, 100) -- 100 AI credits credited on sign up
-    ON CONFLICT (id) DO NOTHING;
+    VALUES (new.id, COALESCE(new.email, new.raw_user_meta_data->>'email', ''), 100) -- 100 AI credits credited on sign up
+    ON CONFLICT (id) DO UPDATE
+    SET email = EXCLUDED.email,
+        updated_at = NOW();
+    RETURN NEW;
+EXCEPTION WHEN OTHERS THEN
+    RAISE WARNING 'handle_new_user trigger encountered an issue: %', SQLERRM;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$;
 
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
 CREATE TRIGGER on_auth_user_created

@@ -1,7 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { MetricCard } from "@/components/metric-card";
-import { Plug, Send, Clock, Loader2, Sparkles, TrendingUp, AlertTriangle, Lightbulb, ArrowRight } from "lucide-react";
+import {
+  Plug,
+  Send,
+  Clock,
+  Loader2,
+  Sparkles,
+  TrendingUp,
+  AlertTriangle,
+  Lightbulb,
+  ArrowRight,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
@@ -46,8 +56,16 @@ function formatRelativeTime(dateStr: string) {
 }
 
 const TONE = {
-  success: { Icon: TrendingUp, color: "text-emerald-700", bg: "bg-emerald-500/10 border-emerald-500/20" },
-  warning: { Icon: AlertTriangle, color: "text-orange-700", bg: "bg-orange-500/10 border-orange-500/20" },
+  success: {
+    Icon: TrendingUp,
+    color: "text-emerald-700",
+    bg: "bg-emerald-500/10 border-emerald-500/20",
+  },
+  warning: {
+    Icon: AlertTriangle,
+    color: "text-orange-700",
+    bg: "bg-orange-500/10 border-orange-500/20",
+  },
   info: { Icon: Lightbulb, color: "text-amber-700", bg: "bg-amber-500/10 border-amber-500/20" },
 } as const;
 
@@ -146,7 +164,12 @@ function DashboardPage() {
               p.status === "published"
                 ? "Auto-posted"
                 : `Schedule: ${new Date(p.scheduled_time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`,
-            status: p.status === "pending" ? "Scheduled" : p.status === "published" ? "Published" : p.status,
+            status:
+              p.status === "pending"
+                ? "Scheduled"
+                : p.status === "published"
+                  ? "Published"
+                  : p.status,
             time: formatRelativeTime(p.updated_at),
           };
         });
@@ -310,11 +333,12 @@ function DashboardPage() {
                 <Send size={16} className="text-orange-600" />
                 Recent automation activity
               </CardTitle>
-              <p className="text-xs text-slate-500">
-                Last updates across all connected platforms
-              </p>
+              <p className="text-xs text-slate-500">Last updates across all connected platforms</p>
             </div>
-            <Badge variant="outline" className="font-bold text-xs bg-orange-500/10 text-orange-700 border border-orange-500/20">
+            <Badge
+              variant="outline"
+              className="font-bold text-xs bg-orange-500/10 text-orange-700 border border-orange-500/20"
+            >
               {recentActivities.length} events
             </Badge>
           </CardHeader>
@@ -333,15 +357,26 @@ function DashboardPage() {
                   <TableRow className="border-b border-orange-100 hover:bg-transparent bg-orange-50/20">
                     <TableHead className="w-[40px]"></TableHead>
                     <TableHead className="text-xs font-bold text-slate-600">Content</TableHead>
-                    <TableHead className="w-[90px] text-xs font-bold text-slate-600">Type</TableHead>
-                    <TableHead className="w-[180px] text-xs font-bold text-slate-600">Trigger</TableHead>
-                    <TableHead className="w-[130px] text-xs font-bold text-slate-600">Status</TableHead>
-                    <TableHead className="w-[110px] text-right text-xs font-bold text-slate-600">Time</TableHead>
+                    <TableHead className="w-[90px] text-xs font-bold text-slate-600">
+                      Type
+                    </TableHead>
+                    <TableHead className="w-[180px] text-xs font-bold text-slate-600">
+                      Trigger
+                    </TableHead>
+                    <TableHead className="w-[130px] text-xs font-bold text-slate-600">
+                      Status
+                    </TableHead>
+                    <TableHead className="w-[110px] text-right text-xs font-bold text-slate-600">
+                      Time
+                    </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {recentActivities.map((row) => (
-                    <TableRow key={row.id} className="border-b border-orange-100/70 hover:bg-orange-50/40">
+                    <TableRow
+                      key={row.id}
+                      className="border-b border-orange-100/70 hover:bg-orange-50/40"
+                    >
                       <TableCell>
                         <PlatformIcon platform={row.platform} withBg size={14} />
                       </TableCell>
@@ -349,11 +384,16 @@ function DashboardPage() {
                         {row.preview}
                       </TableCell>
                       <TableCell>
-                        <Badge variant="outline" className="font-mono text-[10px] bg-slate-100 text-slate-700">
+                        <Badge
+                          variant="outline"
+                          className="font-mono text-[10px] bg-slate-100 text-slate-700"
+                        >
                           {row.type}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-xs text-slate-500 font-medium">{row.trigger}</TableCell>
+                      <TableCell className="text-xs text-slate-500 font-medium">
+                        {row.trigger}
+                      </TableCell>
                       <TableCell>
                         <StatusBadge status={row.status} />
                       </TableCell>
@@ -401,9 +441,7 @@ function DashboardPage() {
                       <div className="text-xs font-bold text-slate-900 leading-tight">
                         {insight.title}
                       </div>
-                      <p className="text-xs leading-relaxed text-slate-600">
-                        {insight.body}
-                      </p>
+                      <p className="text-xs leading-relaxed text-slate-600">{insight.body}</p>
                       <Link to={insight.link}>
                         <Button
                           variant="ghost"

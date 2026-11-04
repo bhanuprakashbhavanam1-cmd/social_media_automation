@@ -266,7 +266,8 @@ function QueuePage() {
           <p className="mt-1 text-sm text-slate-600">
             {isLoading ? (
               <span className="flex items-center gap-1.5">
-                <Loader2 size={12} className="animate-spin text-orange-600" /> Fetching latest queue...
+                <Loader2 size={12} className="animate-spin text-orange-600" /> Fetching latest
+                queue...
               </span>
             ) : (
               `${items.length} posts awaiting publication · ${getNextRunText()}`
@@ -275,9 +276,24 @@ function QueuePage() {
         </div>
         <Tabs value={view} onValueChange={(v) => setView(v as "list" | "calendar" | "logs")}>
           <TabsList className="bg-orange-100/60 border border-orange-200">
-            <TabsTrigger value="list" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">List</TabsTrigger>
-            <TabsTrigger value="calendar" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">Calendar</TabsTrigger>
-            <TabsTrigger value="logs" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">System Logs</TabsTrigger>
+            <TabsTrigger
+              value="list"
+              className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+            >
+              List
+            </TabsTrigger>
+            <TabsTrigger
+              value="calendar"
+              className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+            >
+              Calendar
+            </TabsTrigger>
+            <TabsTrigger
+              value="logs"
+              className="data-[state=active]:bg-orange-500 data-[state=active]:text-white"
+            >
+              System Logs
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </header>

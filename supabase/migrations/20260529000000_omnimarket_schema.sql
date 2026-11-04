@@ -94,6 +94,11 @@ CREATE POLICY "Users can update their own profile"
     FOR UPDATE
     USING (auth.uid() = id);
 
+CREATE POLICY "Users can insert their own profile"
+    ON public.users
+    FOR INSERT
+    WITH CHECK (auth.uid() = id);
+
 -- Social Accounts Policies
 CREATE POLICY "Users can manage their own social accounts"
     ON public.social_accounts
@@ -126,14 +131,22 @@ CREATE POLICY "Users can view analytics for their own posts"
 
 -- Sync Profile on User Signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+SECURITY DEFINER
+SET search_path = public, auth
+LANGUAGE plpgsql AS $$
 BEGIN
     INSERT INTO public.users (id, email, ai_credits)
-    VALUES (new.id, new.email, 100) -- Reward 100 free AI Credits on sign up
-    ON CONFLICT (id) DO NOTHING;
+    VALUES (new.id, COALESCE(new.email, new.raw_user_meta_data->>'email', ''), 100) -- Reward 100 free AI Credits on sign up
+    ON CONFLICT (id) DO UPDATE
+    SET email = EXCLUDED.email,
+        updated_at = NOW();
+    RETURN NEW;
+EXCEPTION WHEN OTHERS THEN
+    RAISE WARNING 'handle_new_user trigger encountered an issue: %', SQLERRM;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$;
 
 CREATE OR REPLACE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users

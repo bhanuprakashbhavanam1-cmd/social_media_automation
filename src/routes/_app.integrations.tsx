@@ -451,7 +451,7 @@ function IntegrationsPage() {
                   className={cn(
                     "flex-1",
                     connected &&
-                    "hover:bg-destructive/10 hover:text-destructive hover:border-destructive/40",
+                      "hover:bg-destructive/10 hover:text-destructive hover:border-destructive/40",
                   )}
                 >
                   {loading ? (

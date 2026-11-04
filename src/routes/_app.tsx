@@ -12,43 +12,89 @@ export const Route = createFileRoute("/_app")({
   component: AppLayout,
 });
 
+/**
+ * Ensures a matching row exists in `public.users` for the authenticated user.
+ * This guarantees foreign key relationships in `social_accounts` and `content_queue`
+ * succeed even if the database trigger was delayed, disabled, or bypassed.
+ */
+async function syncUserProfile(userId: string, email: string) {
+  try {
+    const { error } = await supabase.from("users").upsert(
+      {
+        id: userId,
+        email: email || "",
+      },
+      { onConflict: "id", ignoreDuplicates: true },
+    );
+    if (error) {
+      console.warn("Self-healing profile sync note:", error.message);
+    }
+  } catch (e) {
+    console.warn("Could not sync user profile to database:", e);
+  }
+}
+
 function AppLayout() {
   const navigate = useNavigate();
   const [checking, setChecking] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function checkAuth() {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (!session) {
-        navigate({ to: "/auth" });
-      } else {
-        setChecking(false);
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+
+        if (!isMounted) return;
+
+        if (!session) {
+          navigate({ to: "/auth" });
+        } else {
+          if (session.user) {
+            syncUserProfile(session.user.id, session.user.email || "");
+          }
+          setChecking(false);
+        }
+      } catch (err) {
+        console.error("Auth check failed:", err);
+        if (isMounted) {
+          navigate({ to: "/auth" });
+        }
       }
     }
+
     checkAuth();
 
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!isMounted) return;
+
       if (!session) {
         navigate({ to: "/auth" });
       } else {
+        if (session.user) {
+          syncUserProfile(session.user.id, session.user.email || "");
+        }
         setChecking(false);
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
   if (checking) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-[#0a0a0f] text-foreground">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
           <p className="text-sm text-muted-foreground animate-pulse">
             Establishing secure workspace tunnel...
           </p>
